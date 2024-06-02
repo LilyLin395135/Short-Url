@@ -41,8 +41,9 @@ async function cacheSetClicks(short, clicks) {
   // const idxDB = checkRangeDB(short);
   const cache = await getRedis(idxDB);
   const obj = cache.find((obj) => obj.shorts === short);
-  // obj.clicks = clicks;
-  // setRedis(idxDB, urls, 24 * 60 * 60 * 3);
+  obj.clicks = clicks;
+  setRedis(idxDB, urls, 24 * 60 * 60 * 3);
+  //when update to db?
 }
 
-export default getCryptoID;
+export default { getCryptoID, getCacheURL, cacheSetClicks };
