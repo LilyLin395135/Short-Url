@@ -1,18 +1,6 @@
 {
   "urls": [
     {
-      "id": "1",
-      "longUrl": "https://www.example.com",
-      "shortUrl": "abcdef",
-      "expiryDate": "2024-12-31T23:59:59.000Z"
-    },
-    {
-      "id": "e135",
-      "longUrl": "https://example.com",
-      "shortUrl": "xbmsiuqj",
-      "expiryDate": "2024-12-31"
-    },
-    {
       "id": "6bbb",
       "longUrl": "https://example.com",
       "shortUrl": "vxp2nlbf",
@@ -44,6 +32,90 @@
       "id": "e905",
       "longUrl": "https://example.com",
       "shortUrl": "6loubezq",
+      "clickCount": 0,
+      "expiryDate": "2024-12-31"
+    },
+    {
+      "id": "16bc",
+      "longUrl": "https://www.example.com",
+      "shortUrl": "5hs189x4",
+      "clickCount": 1,
+      "expiryDate": "2024-12-31"
+    },
+    {
+      "id": "e274",
+      "longUrl": "https://www.example.com",
+      "shortUrl": "utepe8c2",
+      "clickCount": 1,
+      "expiryDate": "2024-12-31"
+    },
+    {
+      "id": "da64",
+      "longUrl": "https://www.example.com",
+      "shortUrl": "oy6b5crq",
+      "clickCount": 0,
+      "expiryDate": "2024-12-31"
+    },
+    {
+      "id": "f2f7",
+      "longUrl": "https://www.example.com",
+      "shortUrl": "j3bswiy5",
+      "clickCount": 0,
+      "expiryDate": "2024-12-31"
+    },
+    {
+      "id": "93b1",
+      "longUrl": "https://www.lily.com",
+      "shortUrl": "xzS6acoJLaIHBZreBfYUl0AAW6kdhvHBp0ecBgTIQotBIXHcnG7pC8RFiAR",
+      "clickCount": 0,
+      "expiryDate": "2024-12-31"
+    },
+    {
+      "id": "1614",
+      "longUrl": "https://www.lily.com",
+      "shortUrl": "xzS6aco",
+      "clickCount": 0,
+      "expiryDate": "2024-12-31"
+    },
+    {
+      "id": "2582",
+      "longUrl": "https://www.lily.com",
+      "shortUrl": "JfNQu0Gzw6iavexv",
+      "clickCount": 0,
+      "expiryDate": "2024-12-31"
+    },
+    {
+      "id": "b671",
+      "longUrl": "https://www.lily.com",
+      "shortUrl": "yLOzC7r",
+      "clickCount": 0,
+      "expiryDate": "2024-12-31"
+    },
+    {
+      "id": "dcb8",
+      "longUrl": "https://www.lily.com",
+      "shortUrl": "1",
+      "clickCount": 0,
+      "expiryDate": "2024-12-31"
+    },
+    {
+      "id": "6d23",
+      "longUrl": "https://www.lily.com",
+      "shortUrl": "2",
+      "clickCount": 0,
+      "expiryDate": "2024-12-31"
+    },
+    {
+      "id": "ba7d",
+      "longUrl": "https://www.lily.com",
+      "shortUrl": "3",
+      "clickCount": 0,
+      "expiryDate": "2024-12-31"
+    },
+    {
+      "id": "2d4f",
+      "longUrl": "https://www.lily.com",
+      "shortUrl": "NbUdBDK",
       "clickCount": 0,
       "expiryDate": "2024-12-31"
     }

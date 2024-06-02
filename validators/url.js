@@ -12,5 +12,3 @@ export const getShortUrlsValidator = [
 export const getShortUrlByIdValidator = [
     param('id').notEmpty().withMessage('id is required')
 ];
-
-

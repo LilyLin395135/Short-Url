@@ -1,4 +1,7 @@
 import { urlModel } from '../models/url.js';
+import { generateShortURL } from '../utils/idGenerator.js';
+import { generateRandomString } from '../utils/randomStringGenerator.js';
+import { hashURL } from '../utils/hashGenerator.js';
 
 const PAGESIZE = 6;
 
@@ -11,8 +14,15 @@ const createShortUrlController = async (req, res, next) => {
             expiryDate = new Date();
             expiryDate.setMonth(expiryDate.getMonth() + 1);
         }
-        //將longUrl轉換成短網址
-        const shortUrl = Math.random().toString(36).substr(2, 8);
+        //shortURL
+        //方法一：亂碼
+        // const shortUrl = Math.random().toString(36).substr(2, 7);
+        //方法二：經過base62，用資料庫的 id (auto increment)，生成唯一的 shortURL 
+        // const shortUrl = generateShortURL();
+        //方法三：經過base62，將隨機字串轉換
+        const shortUrl = generateRandomString(7).substring(0, 7);
+        //方法四：經過base62，將隨機字串轉換
+        // const shortUrl = hashURL(longUrl).substring(0, 7);
 
         //設定clickCount為0
         const clickCount = 0;
@@ -32,7 +42,7 @@ const getShortUrlController = async (req, res, next) => {
         const pageSize = PAGESIZE;
         const { allUrls, nextPage } = await urlModel.getAllUrls(page, pageSize);
         res.status(200).json({ data: allUrls, next_page: nextPage });
-    }catch (error) {
+    } catch (error) {
         next(error);
     }
 };
@@ -52,4 +62,19 @@ const getShortUrlByIdController = async (req, res, next) => {
     }
 };
 
-export { createShortUrlController, getShortUrlByIdController, getShortUrlController };
+const redirectByShortUrlController = async (req, res, next) => {
+    try {
+        console.log(req.params)
+        const { shortUrl } = req.params;
+        const urlData = await urlModel.updateClickCount(shortUrl);
+
+        if (!urlData.longUrl) {
+            return res.status(404).json({ message: 'LongUrl not found' });
+        }
+        res.redirect(301, urlData.longUrl);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export { createShortUrlController, getShortUrlByIdController, getShortUrlController, redirectByShortUrlController };

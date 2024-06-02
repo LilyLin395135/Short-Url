@@ -61,5 +61,35 @@ export const urlModel = {
             console.error('Error getting url:', error.message);
             throw new Error('Error getting url, please try again.');
         }
+    },
+
+    async  updateClickCount(shortUrl) {
+        try {
+            // 查找對應的記錄
+            const response = await axios.get(`${baseUrl}?shortUrl=${shortUrl}`);
+            const urlData = response.data[0];
+
+            if (urlData) {
+                const updatedUrl = {
+                    ...urlData,
+                    clickCount: urlData.clickCount + 1
+                };
+
+                // 更新該記錄
+                const updateResponse = await axios.put(`${baseUrl}/${urlData.id}`, updatedUrl);
+                console.log('更新成功:', updateResponse.data);
+                return updateResponse.data;
+
+            } else {
+                console.log('找不到對應的 shortUrl:', shortUrl);
+                throw new Error(`URL not found`);
+            }
+        } catch (error) {
+            if (error.response && error.response.status === 404) {
+                throw new Error(`This shortUrl not found`);
+            }
+            console.error('Error getting url:', error.message);
+            throw new Error('Error getting url, please try again.');
+        }
     }
 };
