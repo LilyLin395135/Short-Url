@@ -1,5 +1,6 @@
 import express from 'express';
 import urlRouter from './routes/url.js';
+import redirectRouter from './routes/redirectUrl.js'
 import { errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
@@ -9,6 +10,8 @@ const PORT = 3000;
 app.use(express.json());
 
 app.use('/api', urlRouter);
+
+app.use('/', redirectRouter)
 
 app.use(errorHandler);
 

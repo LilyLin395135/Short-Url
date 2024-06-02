@@ -62,4 +62,19 @@ const getShortUrlByIdController = async (req, res, next) => {
     }
 };
 
-export { createShortUrlController, getShortUrlByIdController, getShortUrlController };
+const redirectByShortUrlController = async (req, res, next) => {
+    try {
+        console.log(req.params)
+        const { shortUrl } = req.params;
+        const urlData = await urlModel.updateClickCount(shortUrl);
+
+        if (!urlData.longUrl) {
+            return res.status(404).json({ message: 'LongUrl not found' });
+        }
+        res.redirect(301, urlData.longUrl);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export { createShortUrlController, getShortUrlByIdController, getShortUrlController, redirectByShortUrlController };
