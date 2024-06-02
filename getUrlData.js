@@ -1,6 +1,6 @@
 import connections from "./database/connDB.js";
 import funcDB from "./database/funcDB.js";
-const { newUrl, updateClicks, getUrl, deleteUrl } = funcDB;
+const { newUrl, updateClicks, getUrl, deleteUrl, countUrl } = funcDB;
 
 const pool = connections[0];
 const DATA_NUMBER = 2;
@@ -43,13 +43,21 @@ async function getData() {
 async function deleteData() {
   const conn = await pool.getConnection();
   await createUrlTable();
-  deleteUrl(conn, "https://www.example.com/1");
+  await deleteUrl(conn, "https://www.example.com/1");
+  console.log("end");
+}
+async function countData() {
+  const conn = await pool.getConnection();
+  await createUrlTable();
+  const count = await countUrl(conn);
+  console.log(count);
   console.log("end");
 }
 // genNewData();
 // updateData();
 // getData();
-deleteData();
+// deleteData();
+countData();
 
 const longs = [
   "https://wordpress.com/zh-tw/support/com-vs-org/#overview-of-differences",
